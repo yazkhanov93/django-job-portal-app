@@ -1,0 +1,28 @@
+{% extends 'sign_up.html' %}
+
+{% load static %}
+
+
+{%  block content %}
+
+<div style="margin-top:150px;">
+<form method="post" style="color: #000;" class="form-control col-md-8 justify-content-center" style="display:  grid; grid-gap: 5px; margin-top: 50px;">
+	{% csrf_token %}
+	<h5>Add Experience</h5>
+	<hr>
+	<input type="hidden" name="user" value="{{request.user.id}}" class="form-control">
+	{{experience.job_name}}
+	<hr>
+	{{experience.job_position}}
+	<hr>
+	{{experience.company}}
+	<hr>
+	{{experience.years}}
+	
+	<hr>
+	<input type="submit" name="" value="Save" class="btn btn-success">
+	{{experience.errors}}
+</form>
+</div>
+
+{% endblock %}

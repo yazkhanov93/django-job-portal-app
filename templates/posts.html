@@ -1,0 +1,31 @@
+{% extends 'vacancy.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% for post in post %}
+<div class="single-post d-flex flex-row form-control" style="margin-top:100px; margin-left:30px; width: 80%; height: 200px;">
+	<div class="thumb">
+		<img src="{{post.image.url}}" alt="" style="height: 180px; margin-right:5px;">
+		<ul class="tags">
+			<li>
+				<a>{{post.user.profile.name|truncatewords:4}}</a>
+			</li>
+		</ul>
+	</div>
+	<div class="details">
+		<div class="title d-flex flex-row justify-content-between">
+			<div class="titles">
+				<a href="{% url 'post_detail' post.id %}"><h4>{{post.title}}</h4></a>
+				
+			</div>
+		</div>
+		<p>{{post.body|truncatewords:20}}</p>
+		<span class="address" style="float:right;">created: {{post.created_at}}</span><br>
+		<span class="address" style="float:right;">updated: {{post.updated}}</span>
+	</div>
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'sign_up.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="row">
+    {% for profile in profile %}
+    <a href="">
+        <div class="card" style="width: 12rem; height: 18rem; margin: 10px;">
+            <img src="{{profile.image.url}}" class="card-img-top" alt="..." style="  height: 10rem;">
+            <div class="card-body">
+                <h6 class="card-title">{{profile.name}}</h6>
+                <h6 class="card-title">{{profile.surname}}</h6>
+                <p class="card-text">{{profile.category}}</p>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

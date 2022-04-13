@@ -1,0 +1,697 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="{% static 'img/fav.png' %}">
+    <!-- Author Meta -->
+    <meta name="author" content="codepixer">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Job Listing</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <!--
+    CSS
+    ============================================= -->
+    <link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+
+<header id="header" id="home">
+    <div class="container">
+        <div class="row align-items-center justify-content-between d-flex">
+            <div id="logo">
+                <a href="index.html"><img src="{% static 'img/all-in-one.png' %}" alt="" title=""
+                                          style="width: 200px; height: 50px;"></a>
+            </div>
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li class="menu-active"><a href="/">Home</a></li>
+                    <li class="menu-active"><a href="{% url 'profiles' %}">Profiles</a></li>
+                    <li><a href="{% url 'posts' %}">News</a></li>
+                    <li><a href="#footer">Contact</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a class="" href="{% url 'messages' %}"> <img src="{% static 'img/email.png' %}"> <span style="color: yellow;">{% if message_count > 0 %}{{message_count}}{% endif %}</span></a></li>
+                    <li class="menu-has-children"><a href="{% url 'my_profile' %}">My profile</a>
+                        <ul>
+                            <li><a href="{% url 'profile_setting' %}">Profile settings</a></li>
+                            <li><a href="">Messages</a></li>
+                            <li><a href="{% url 'sign_out' %}">Sign out</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li><a class="ticker-btn" href="{% url 'sign_up' %}">Sign up</a></li>
+                    <li><a class="ticker-btn" href="{% url 'sign_in' %}">Sign in</a></li>
+                    {% endif %}
+                </ul>
+            </nav><!-- #nav-menu-container -->
+        </div>
+    </div>
+</header><!-- #header -->
+
+
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row fullscreen d-flex align-items-center justify-content-center">
+            <div class="banner-content col-lg-12">
+                <h1 class="text-white">
+                    <!-- <span>{{vacancy.count}}</span> Vacancy here -->
+                </h1>
+                <form action="" class="serach-form-area" method="get">
+                    <div class="row justify-content-center form-wrap">
+                        <div class="col-lg-8 form-cols">
+                            <input type="text" class="form-control" name="search"
+                                   placeholder="what are you looging for?">
+                        </div>
+                        <!-- <div class="col-lg-3 form-cols">
+                            <div class="default-select" id="default-selects">
+                                <select>
+                                    <option value="1"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 form-cols">
+                            <div class="default-select" id="default-selects2">
+                                <select>
+                                    <option value=""><a href="{% url 'index' %}">All Category</a></option>
+                                    <option value=""><a href=""></a>
+                                    </option>
+                                </select>
+                            </div>
+                        </div> -->
+                        <div class="col-lg-3 form-cols">
+                            <button type="button" class="btn btn-info">
+                                <span class="lnr lnr-magnifier"></span> Search
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                
+                <p class="text-white"><span>Search by tags:</span> Tecnology, Business, Consulting, IT Company, Design,
+                    Development</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+
+<!-- Start features Area -->
+<section class="features-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="single-feature">
+                    <h4>Searching</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-feature">
+                    <h4>Applying</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-feature">
+                    <h4>Security</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-feature">
+                    <h4>Notifications</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End features Area -->
+
+<!-- Start popular-post Area -->
+<!--			<section class="popular-post-area pt-100">-->
+<!--				<div class="container">-->
+<!--					<div class="row align-items-center">-->
+<!--						<div class="active-popular-post-carusel">-->
+<!--							<div class="single-popular-post d-flex flex-row">-->
+<!--								<div class="thumb">-->
+<!--									<img class="img-fluid" src="{% static 'img/p1.png' %}" alt="">-->
+<!--									<a class="btns text-uppercase" href="#">view job post</a>-->
+<!--								</div>-->
+<!--								<div class="details">-->
+<!--									<a href="#"><h4>Creative Designer</h4></a>-->
+<!--									<h6>Los Angeles</h6>-->
+<!--									<p>-->
+<!--										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.-->
+<!--									</p>-->
+<!--								</div>-->
+<!--							</div>	-->
+<!--							<div class="single-popular-post d-flex flex-row">-->
+<!--								<div class="thumb">-->
+<!--									<img src="{% static 'img/p2.png' %}" alt="">-->
+<!--									<a class="btns text-uppercase" href="#">view job post</a>-->
+<!--								</div>-->
+<!--								<div class="details">-->
+<!--									<a href="#"><h4>Creative Designer</h4></a>-->
+<!--									<h6>Los Angeles</h6>-->
+<!--									<p>-->
+<!--										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.-->
+<!--									</p>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--							<div class="single-popular-post d-flex flex-row">-->
+<!--								<div class="thumb">-->
+<!--									<img src="{% static 'img/p1.png' %}" alt="">-->
+<!--									<a class="btns text-uppercase" href="#">view job post</a>-->
+<!--								</div>-->
+<!--								<div class="details">-->
+<!--									<a href="#"><h4>Creative Designer</h4></a>-->
+<!--									<h6>Los Angeles</h6>-->
+<!--									<p>-->
+<!--										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.-->
+<!--									</p>-->
+<!--								</div>-->
+<!--							</div>	-->
+<!--							<div class="single-popular-post d-flex flex-row">-->
+<!--								<div class="thumb">-->
+<!--									<img src="{% static 'img/p2.png' %}" alt="">-->
+<!--									<a class="btns text-uppercase" href="#">view job post</a>-->
+<!--								</div>-->
+<!--								<div class="details">-->
+<!--									<a href="#"><h4>Creative Designer</h4></a>-->
+<!--									<h6>Los Angeles</h6>-->
+<!--									<p>-->
+<!--										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.-->
+<!--									</p>-->
+<!--								</div>-->
+<!--							</div>	-->
+<!--							<div class="single-popular-post d-flex flex-row">-->
+<!--								<div class="thumb">-->
+<!--									<img src="{% static 'img/p1.png' %}" alt="">-->
+<!--									<a class="btns text-uppercase" href="#">view job post</a>-->
+<!--								</div>-->
+<!--								<div class="details">-->
+<!--									<a href="#"><h4>Creative Designer</h4></a>-->
+<!--									<h6>Los Angeles</h6>-->
+<!--									<p>-->
+<!--										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.-->
+<!--									</p>-->
+<!--								</div>-->
+<!--							</div>	-->
+<!--							<div class="single-popular-post d-flex flex-row">-->
+<!--								<div class="thumb">-->
+<!--									<img src="{% static 'img/p2.png' %}" alt="">-->
+<!--									<a class="btns text-uppercase" href="#">view job post</a>-->
+<!--								</div>-->
+<!--								<div class="details">-->
+<!--									<a href="#"><h4>Creative Designer</h4></a>-->
+<!--									<h6>Los Angeles</h6>-->
+<!--									<p>-->
+<!--										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.-->
+<!--									</p>-->
+<!--								</div>-->
+<!--							</div>																																							-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>	-->
+<!--			</section>-->
+<!-- End popular-post Area -->
+
+<!-- Start feature-cat Area -->
+<!-- <section class="feature-cat-area pt-100" id="category">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-10">
+                <div class="title text-center">
+                    <h1 class="mb-10">Featured Job Categories</h1>
+                    <p>Who are in extremely love with eco friendly system.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat">
+                    <a href="category.html">
+                        <img src="{% static 'img/o1.png' %}" alt="">
+                    </a>
+                    <p>Accounting</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat">
+                    <a href="category.html">
+                        <img src="{% static 'img/o2.png' %}" alt="">
+                    </a>
+                    <p>Development</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat">
+                    <a href="category.html">
+                        <img src="{% static 'img/o3.png' %}" alt="">
+                    </a>
+                    <p>Technology</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat">
+                    <a href="category.html">
+                        <img src="{% static 'img/o4.png' %}" alt="">
+                    </a>
+                    <p>Media & News</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat">
+                    <a href="category.html">
+                        <img src="{% static 'img/o5.png' %}" alt="">
+                    </a>
+                    <p>Medical</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat">
+                    <a href="category.html">
+                        <img src="{% static 'img/o6.png' %}" alt="">
+                    </a>
+                    <p>Goverment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!-- End feature-cat Area -->
+
+<!-- Start post Area -->
+<section class="post-area section-gap">
+    <div class="container">
+        <div class="row justify-content-center d-flex">
+            <div class="col-lg-8 post-list">
+                {% block jobType %}
+                <ul class="cat-list">
+                    {% for jobtypes in jobtypes %}
+                    <li><a href="{{jobtypes.get_absolute_url}}">{{jobtypes.name}}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endblock %}
+
+
+                {% block vacancy %}
+                {% for vacancy in vacancy %}
+                <div class="single-post d-flex flex-row">
+                    <div class="thumb">
+                        <img src="{{vacancy.image.url}}" alt="">
+                        <ul class="tags">
+                            <li>
+                                <a>{{vacancy.skills|truncatewords:4}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="details col-md-6">
+                        <div class="title d-flex flex-row">
+                            <div class="titles">
+                                <a href=""><h4>{{vacancy.title}}</h4></a>
+                                <h6>{{vacancy.category}}</h6>
+                            </div>
+                        </div>
+                        <p>
+                            {{vacancy.description|truncatewords:20}}
+                        </p>
+                        <h5>Job Nature: {{vacancy.types}}</h5>
+                        <p class="address"><span class="lnr lnr-map"></span> {{vacancy.region}} {{vacancy.address}}</p>
+                        <p class="address"><span class="lnr lnr-database"></span>{{vacancy.salary}} </p>
+                        <span class="address" style="float:right;">{{vacancy.published}}</span>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endblock %}
+                <!-- <div class="single-post d-flex flex-row">
+                    <div class="thumb">
+                        <img src="{% static 'img/post.png' %}" alt="">
+                        <ul class="tags">
+                            <li>
+                                <a href="#">Art</a>
+                            </li>
+                            <li>
+                                <a href="#">Media</a>
+                            </li>
+                            <li>
+                                <a href="#">Design</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="details">
+                        <div class="title d-flex flex-row justify-content-between">
+                            <div class="titles">
+                                <a href="single.html"><h4>Creative Art Designer</h4></a>
+                                <h6>Premium Labels Limited</h6>
+                            </div>
+                            <ul class="btns">
+                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
+                                <li><a href="#">Apply</a></li>
+                            </ul>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+                        </p>
+                        <h5>Job Nature: Full time</h5>
+                        <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
+                        <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+                    </div>
+                </div>
+                <div class="single-post d-flex flex-row">
+                    <div class="thumb">
+                        <img src="{% static 'img/post.png' %}" alt="">
+                        <ul class="tags">
+                            <li>
+                                <a href="#">Art</a>
+                            </li>
+                            <li>
+                                <a href="#">Media</a>
+                            </li>
+                            <li>
+                                <a href="#">Design</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="details">
+                        <div class="title d-flex flex-row justify-content-between">
+                            <div class="titles">
+                                <a href="single.html"><h4>Creative Art Designer</h4></a>
+                                <h6>Premium Labels Limited</h6>
+                            </div>
+                            <ul class="btns">
+                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
+                                <li><a href="#">Apply</a></li>
+                            </ul>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+                        </p>
+                        <h5>Job Nature: Full time</h5>
+                        <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
+                        <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+                    </div>
+                </div>
+                <div class="single-post d-flex flex-row">
+                    <div class="thumb">
+                        <img src="{% static 'img/post.png' %}" alt="">
+                        <ul class="tags">
+                            <li>
+                                <a href="#">Art</a>
+                            </li>
+                            <li>
+                                <a href="#">Media</a>
+                            </li>
+                            <li>
+                                <a href="#">Design</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="details">
+                        <div class="title d-flex flex-row justify-content-between">
+                            <div class="titles">
+                                <a href="single.html"><h4>Creative Art Designer</h4></a>
+                                <h6>Premium Labels Limited</h6>
+                            </div>
+                            <ul class="btns">
+                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
+                                <li><a href="#">Apply</a></li>
+                            </ul>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+                        </p>
+                        <h5>Job Nature: Full time</h5>
+                        <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
+                        <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+                    </div>
+                </div>
+                <div class="single-post d-flex flex-row">
+                    <div class="thumb">
+                        <img src="{% static 'img/post.png' %}" alt="">
+                        <ul class="tags">
+                            <li>
+                                <a href="#">Art</a>
+                            </li>
+                            <li>
+                                <a href="#">Media</a>
+                            </li>
+                            <li>
+                                <a href="#">Design</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="details">
+                        <div class="title d-flex flex-row justify-content-between">
+                            <div class="titles">
+                                <a href="single.html"><h4>Creative Art Designer</h4></a>
+                                <h6>Premium Labels Limited</h6>
+                            </div>
+                            <ul class="btns">
+                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
+                                <li><a href="#">Apply</a></li>
+                            </ul>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+                        </p>
+                        <h5>Job Nature: Full time</h5>
+                        <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
+                        <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+                    </div>
+                </div>
+                <div class="single-post d-flex flex-row">
+                    <div class="thumb">
+                        <img src="{% static 'img/post.png' %}" alt="">
+                        <ul class="tags">
+                            <li>
+                                <a href="#">Art</a>
+                            </li>
+                            <li>
+                                <a href="#">Media</a>
+                            </li>
+                            <li>
+                                <a href="#">Design</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="details">
+                        <div class="title d-flex flex-row justify-content-between">
+                            <div class="titles">
+                                <a href="single.html"><h4>Creative Art Designer</h4></a>
+                                <h6>Premium Labels Limited</h6>
+                            </div>
+                            <ul class="btns">
+                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
+                                <li><a href="#">Apply</a></li>
+                            </ul>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+                        </p>
+                        <h5>Job Nature: Full time</h5>
+                        <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
+                        <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+                    </div>
+                </div>
+                <div class="single-post d-flex flex-row">
+                    <div class="thumb">
+                        <img src="{% static 'img/post.png' %}" alt="">
+                        <ul class="tags">
+                            <li>
+                                <a href="#">Art</a>
+                            </li>
+                            <li>
+                                <a href="#">Media</a>
+                            </li>
+                            <li>
+                                <a href="#">Design</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="details">
+                        <div class="title d-flex flex-row justify-content-between">
+                            <div class="titles">
+                                <a href="single.html"><h4>Creative Art Designer</h4></a>
+                                <h6>Premium Labels Limited</h6>
+                            </div>
+                            <ul class="btns">
+                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
+                                <li><a href="#">Apply</a></li>
+                            </ul>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+                        </p>
+                        <h5>Job Nature: Full time</h5>
+                        <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
+                        <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+                    </div>
+                </div> -->
+
+                <a class="text-uppercase loadmore-btn mx-auto d-block" href="{% url 'vacancy' %}">See more</a>
+
+            </div>
+            <div class="col-lg-4 sidebar">
+                <div class="single-slidebar">
+                    <h4>Jobs by Location</h4>
+                    <ul class="cat-list">
+                        {% for region in region %}
+                        <li><a class="justify-content-between d-flex"><p>{{region.region}}</p>
+                            <span></span></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                
+
+                <div class="single-slidebar">
+                    <h4>Profiles by Category</h4>
+                    <ul class="cat-list">
+                        {% for cat in categories %}
+                        <li><a class="justify-content-between d-flex" href="{{cat.get_absolute_url}}"><p>{{cat.name}}</p>
+                            <span></span></a></li>
+                            {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- <div class="single-slidebar">
+                    <h4>Carrer Advice Blog</h4>
+                    <div class="blog-list">
+                        <div class="single-blog " style="background:#000 url('{% static 'img/blog1.jpg' %}' );">
+                            <a href="single.html"><h4>Home Audio Recording <br>
+                            For Everyone</h4></a>
+                            <div class="meta justify-content-between d-flex">
+                                <p>
+                                    02 Hours ago
+                                </p>
+                                <p>
+                                    <span class="lnr lnr-heart"></span>
+                                    06
+                                     <span class="lnr lnr-bubble"></span>
+                                    02
+                                </p>
+                            </div>
+                        </div>
+                        <div class="single-blog " style="background:#000 url('{% static 'img/blog2.jpg' %}');">
+                            <a href="single.html"><h4>Home Audio Recording <br>
+                            For Everyone</h4></a>
+                            <div class="meta justify-content-between d-flex">
+                                <p>
+                                    02 Hours ago
+                                </p>
+                                <p>
+                                    <span class="lnr lnr-heart"></span>
+                                    06
+                                     <span class="lnr lnr-bubble"></span>
+                                    02
+                                </p>
+                            </div>
+                        </div>
+                        <div class="single-blog " style="background:#000 url('{% static 'img/blog1.jpg' %}');">
+                            <a href="single.html"><h4>Home Audio Recording <br>
+                            For Everyone</h4></a>
+                            <div class="meta justify-content-between d-flex">
+                                <p>
+                                    02 Hours ago
+                                </p>
+                                <p>
+                                    <span class="lnr lnr-heart"></span>
+                                    06
+                                     <span class="lnr lnr-bubble"></span>
+                                    02
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- start footer Area -->
+<footer class="footer-area section-gap" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3  col-md-12">
+                <div class="single-footer-widget">
+                    <h6>Contact Us</h6>
+                    <ul class="footer-nav">
+                        <li><a href="#">Address:</a></li>
+                        <li><a href="#">Email:</a></li>
+                        <li><a href="#">Phone:</a></li>
+                        <li><a href="#">Location:</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row footer-bottom d-flex justify-content-between">
+            <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;
+                All rights reserved | All-In-One 
+            </p>
+            <div class="col-lg-4 col-sm-12 footer-social">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-telegram"></i></a>
+                <a href="#"><i class="fa fa-github"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End footer Area -->
+
+<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+<script src="{% static 'js/easing.min.js' %}"></script>
+<script src="{% static 'js/hoverIntent.js' %}"></script>
+<script src="{% static 'js/superfish.min.js' %}"></script>
+<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.sticky.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/parallax.min.js' %}"></script>
+<script src="{% static 'js/mail-script.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+
+
+

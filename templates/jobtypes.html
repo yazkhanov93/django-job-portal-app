@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block vacancy %}
+{% for vacancy in vacancy %}
+<div class="single-post d-flex flex-row">
+    <div class="thumb">
+        <img src="{{vacancy.image.url}}" alt="">
+        <ul class="tags">
+            <li>
+                <a>{{vacancy.skills|truncatewords:4}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="details col-md-6">
+        <div class="title d-flex flex-row">
+            <div class="titles">
+                <a href=""><h4>{{vacancy.title}}</h4></a>
+                <h6>{{vacancy.category}}</h6>
+            </div>
+        </div>
+        <p>
+            {{vacancy.description|truncatewords:20}}
+        </p>
+        <h5>Job Nature: {{vacancy.type}}</h5>
+        <p class="address"><span class="lnr lnr-map"></span> {{vacancy.region}} {{vacancy.address}}</p>
+        <p class="address"><span class="lnr lnr-database"></span>{{vacancy.salary}} </p>
+        <span class="address" style="float:right;">{{vacancy.published}}</span>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

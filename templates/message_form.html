@@ -1,0 +1,22 @@
+{% extends 'my_profile.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+<div class="form-control col-md-8">
+	<form action="" method="post">
+		{% csrf_token %}
+		<input type="hidden" name="user_sender" value="{{request.user.profile.name}}">
+		<input type="text" name="user_receiver" value="{{profile.user.id}}">
+		<!-- {{message.user_receiver}} -->
+		{{message.body}}
+		<button type="submit" class="btn btn-outline-success">Send</button>
+		{{message.errors}}
+	</form>
+</div>
+
+
+{% endblock %}

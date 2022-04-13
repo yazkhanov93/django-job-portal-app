@@ -1,0 +1,25 @@
+{% extends 'sign_up.html' %}
+
+{% load static %}
+
+
+{%  block content %}
+
+<div style="margin-top:150px;">
+<form method="post" enctype="multipart/form-data" action="." style="color: #000;" class="form-control col-md-8 justify-content-center" style="display:  grid; grid-gap: 5px; margin-top: 50px;">
+	{% csrf_token %}
+	<h5>Add Post</h5>
+	<hr>
+	<input type="hidden" name="user" value="{{request.user.id}}" class="form-control">
+	{{post.image}}
+	<hr>
+	{{post.title}}
+	<hr>
+	{{post.body}}
+	<hr>
+	<input type="submit" name="" value="Save" class="btn btn-success">
+	{{post.errors}}
+</form>
+</div>
+
+{% endblock %}

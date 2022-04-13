@@ -1,0 +1,30 @@
+{% extends 'sign_up.html' %}
+
+{% load static %}
+
+
+{%  block content %}
+<div class="col-md-12" style="display:grid; grid-template-columns:repeat(2, 1fr); margin-top:200px;">
+
+	<div class="single-post" style="width: 500px;">
+		<img class="img-fluid" src="{{post.image.url}}" alt="" style="width: 100% ; height: 400px;">
+	</div>
+	<div style="color:#fff; width:500px; margin-left: 10px;">
+		<a href="">
+			<h4>{{post.title}}</h4>
+		</a>
+		<hr>
+		<p>{{post.body}}</p>
+		<ul class="tags">
+			<li><a>published -- {{post.created_at}}</a></li><br>
+			<li><a>updated -- {{post.updated}}</a></li>
+		</ul>
+		<a href="{% url 'edit_post' post.id %}" class="btn btn-warning">edit</a>
+		<a href="{% url 'delete_post' post.id %}" class="btn btn-danger">delete</a>
+	</div>
+</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'sign_up.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="row mt-4">
+    <div class="single-post d-flex flex-row form-control" style="margin-top:200px;">
+        <div class="thumb">
+            <img src="{{vacancy.image.url}}" alt="">
+            <ul class="tags">
+                <li>
+                    <a>{{vacancy.skills|truncatewords:4}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="details">
+            <div class="title d-flex flex-row justify-content-between">
+                <div class="titles">
+                    <a href="single.html"><h4>{{vacancy.title}}</h4></a>
+                    <h6>{{vacancy.category}}</h6>
+                </div>
+            </div>
+            <p>{{vacancy.description}}</p>
+            <h5>Job Nature: {{vacancy.types}}</h5>
+            <p class="address"><span class="lnr lnr-map"></span>{{vacancy.region}} {{vacancy.address}}</p>
+            <p class="address"><span class="lnr lnr-database"></span>{{vacancy.salary}}</p>
+            <span class="address" style="float:right;">{{vacancy.published}}</span>
+        </div>
+    </div>
+</div>
+{% endblock %}

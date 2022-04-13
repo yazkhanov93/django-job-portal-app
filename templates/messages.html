@@ -1,0 +1,32 @@
+{% extends 'my_profile.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% for message in messages %}
+<div class="single-post d-flex flex-row form-control col-md-10" {% if message.is_read == False %} style="background:#c0c0c0;" {% endif %}>
+	
+	<!-- <div class="thumb">
+		<img src="" alt="" style="height: 180px; margin-right:5px;">
+		<ul class="tags">
+			<li>
+				<a>date</a>
+			</li>
+		</ul>
+	</div> -->
+	<div class="details">
+		<a href="{% url 'message_detail' message.id %}">
+		<div class="title d-flex flex-row justify-content-between">
+			<div class="titles">
+				<h4>{{message.user_sender}} <small style="float:right; margin-left: 50px;">{{message.created_at}}</small> </h4> 		
+			</div>
+		</div>
+		<p>{{message.body|truncatewords:10}} </p>
+		</a>
+	</div>
+	<a href="{% url 'delete_message' message.id %}" style="color:red;">Delete</a>
+</div>
+{% endfor %}
+{% endblock %}

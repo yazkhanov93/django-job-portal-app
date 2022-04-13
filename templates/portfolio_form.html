@@ -1,0 +1,26 @@
+{% extends 'sign_up.html' %}
+
+{% load static %}
+
+
+{%  block content %}
+
+<div style="margin-top:150px;">
+<form method="post" style="color: #000;" enctype="multipart/form-data" class="form-control col-md-8 justify-content-center" style="display:  grid; grid-gap: 5px; margin-top: 50px;">
+	{% csrf_token %}
+	<h5>Add Portfolio</h5>
+	{{portfolio.image}}
+	<hr>
+	<input type="hidden" name="user" value="{{request.user.id}}" class="form-control">
+	{{portfolio.name}}
+	<hr>
+	{{portfolio.link}}
+	<hr>
+	{{portfolio.description}}
+	<hr>
+	<input type="submit" name="" value="Save" class="btn btn-success">
+	{{portfolio.errors}}
+</form>
+</div>
+
+{% endblock %}

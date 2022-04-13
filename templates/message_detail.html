@@ -1,0 +1,23 @@
+{% extends 'my_profile.html' %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+
+<div class="single-post d-flex flex-row form-control">
+	<div class="details">
+		<div href="" class="title d-flex flex-row justify-content-between">
+			<div class="titles">
+				<h4>{{message.user_sender}} <small style="float:right; margin-left: 50px;">{{message.created_at}}</small> </h4> 		
+			</div>
+		</div>
+		<p>{{message.body}} </p>
+	</div>
+	<a href="{% url 'delete_message' message.id %}" style="color: red;">Delete</a>
+</div>
+
+
+{% endblock %}

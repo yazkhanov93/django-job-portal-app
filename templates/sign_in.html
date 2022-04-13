@@ -1,0 +1,30 @@
+{% extends 'sign_up.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<form action="." class="serach-form-area" method="post">
+
+    {% csrf_token %}
+    <div class="col-md-6 d-grid justify-content-center form-wrap">
+        <h5 class="text-white">Sign Up</h5>
+        <div class="col-lg-12 mb-2 form-cols">
+            <input type="text" class="form-control" placeholder="username" name="username">
+        </div>
+        <div class="col-lg-12 mb-2 form-cols">
+            <input type="password" class="form-control" placeholder="password" name="password">
+        </div>
+        <div class="col-lg-12 form-cols">
+            <input type="submit" class="btn btn-success" value="Sign in">
+        </div>
+        <div class="col-lg-12 form-cols">
+            <a href="{% url 'sign_up' %}" style="margin-top: 20px;">I don't have an account</a>
+        </div>
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+    </div>
+</form>
+
+{% endblock %}

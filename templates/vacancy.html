@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="codepixer">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Job Listing</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+			<!--
+			CSS
+			============================================= -->
+			<link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+			<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+			<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+			<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+			<link rel="stylesheet" href="{% static 'css/nice-select.css' %}">					
+			<link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+			<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+			<link rel="stylesheet" href="{% static 'css/main.css' %}">
+		</head>
+		<body>
+
+			<header id="header" id="home" class="bg-dark">
+				<div class="container">
+					<div class="row align-items-center justify-content-between d-flex bg-dark">
+						<div id="logo">
+							<a href="{% url 'index' %}"><img src="{% static 'img/all-in-one.png' %}" alt="" title=""
+								style="width: 200px; height: 50px;"></a>
+							</div>
+							<form class="d-flex" method="get">
+								<input type="search" name="search" placeholder="Search" class="form-control me-2" style="background:transparent; border: 2px solid yellow; color: yellow;">
+								<input type="submit" name="" value="Seach" class="btn btn-outline-warning">
+							</form>
+							<nav id="nav-menu-container">
+								<ul class="nav-menu">
+									<li class="menu-active"><a href="{% url 'index' %}">Home</a></li>
+									<li><a href="#footer">About Us</a></li>
+									<li><a href="{% url 'posts' %}">News</a></li>
+									<!-- <li><a href="blog-home.html">Blog</a></li> -->
+									<li><a href="#footer">Contact</a></li>
+									{% if user.is_authenticated %}
+									<li><a class="ticker-btn" href="{% url 'my_profile' %}">My profile</a></li>
+									{% else %}
+									<li><a class="ticker-btn" href="{% url 'sign_up' %}">Sign up</a></li>
+									<li><a class="ticker-btn" href="{% url 'sign_in' %}">Sign in</a></li>				          				          
+									{% endif %}
+								</ul>
+							</nav><!-- #nav-menu-container -->		    		
+						</div>
+					</div>
+				</header><!-- #header -->
+
+				<!-- End banner Area -->	
+
+				<!-- Start post Area -->
+				{% block content %}
+				{% for vacancy in vacancy %}
+				<div class="single-post d-flex flex-row form-control" style="margin-top:100px;">
+					<div class="thumb">
+						<img src="{{vacancy.image.url}}" alt="">
+						<ul class="tags">
+							<li>
+								<a>{{vacancy.skills|truncatewords:4}}</a>
+							</li>
+						</ul>
+					</div>
+					<div class="details">
+						<div class="title d-flex flex-row justify-content-between">
+							<div class="titles">
+								<a href="{% url 'vacancy_detail' vacancy.id %}"><h4>{{vacancy.title}}</h4></a>
+								<h6>{{vacancy.category}}</h6>
+							</div>
+						</div>
+						<p>{{vacancy.description|truncatewords:20}}</p>
+						<h5>Job Nature: {{vacancy.types}}</h5>
+						<p class="address"><span class="lnr lnr-map"></span> {{vacancy.region}}, {{vacancy.address}}</p>
+						<p class="address"><span class="lnr lnr-database"></span> {{vacancy.salary}}</p>
+						<span class="address" style="float:right;">{{vacancy.published}}</span>
+					</div>
+				</div>
+				{% endfor %}
+				{% endblock %}
+
+				<!-- start footer Area -->		
+				<footer class="footer-area section-gap" id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-3  col-md-12">
+								<div class="single-footer-widget">
+									<h6>Contact Us</h6>
+									<ul class="footer-nav">
+										<li><a href="#">Address:</a></li>
+										<li><a href="#">Email:</a></li>
+										<li><a href="#">Phone:</a></li>
+										<li><a href="#">Location:</a></li>
+									</ul>
+								</div>
+							</div>
+							
+						</div>
+
+						<div class="row footer-bottom d-flex justify-content-between">
+							<p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								Copyright &copy;
+								All rights reserved | All-In-One
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							</p>
+							<div class="col-lg-4 col-sm-12 footer-social">
+								<a href="#"><i class="fa fa-facebook"></i></a>
+								<a href="#"><i class="fa fa-telegram"></i></a>
+								<a href="#"><i class="fa fa-github"></i></a>
+								<a href="#"><i class="fa fa-instagram"></i></a>
+							</div>
+						</div>
+					</div>
+				</footer>
+				<!-- End footer Area -->		
+
+				<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+				integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+				crossorigin="anonymous"></script>
+				<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+				<script type="text/javascript"
+				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+				<script src="{% static 'js/easing.min.js' %}"></script>
+				<script src="{% static 'js/hoverIntent.js' %}"></script>
+				<script src="{% static 'js/superfish.min.js' %}"></script>
+				<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+				<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+				<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+				<script src="{% static 'js/jquery.sticky.js' %}"></script>
+				<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+				<script src="{% static 'js/parallax.min.js' %}"></script>
+				<script src="{% static 'js/mail-script.js' %}"></script>
+				<script src="{% static 'js/main.js' %}"></script>
+			</body>
+			</html>
+
+
+
+
